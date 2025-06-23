@@ -1,0 +1,67 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>QCM Code de la route - Cameroun</title>
+  <style>
+    body { font-family: sans-serif; background: #f9f9f9; padding: 1em; }
+    h2 { color: #007bff; }
+    .question { margin-bottom: 2em; padding: 1em; background: #fff; border: 1px solid #ccc; border-radius: 8px; }
+    button { margin-top: 1em; padding: 0.5em 1em; }
+    #chatbot { background: #e8f0fe; padding: 1em; margin-top: 2em; border-radius: 8px; }
+  </style>
+  <script>
+    function valider(id, reponseCorrecte) {
+      const radios = document.getElementsByName("q" + id);
+      let reponse = "";
+      for (const r of radios) {
+        if (r.checked) reponse = r.value;
+      }
+      const res = document.getElementById("result" + id);
+      if (reponse === reponseCorrecte) {
+        res.innerHTML = "✅ Bonne réponse !";
+      } else {
+        res.innerHTML = "❌ Mauvaise réponse. La bonne réponse est : " + reponseCorrecte;
+      }
+
+      // Chatbot message
+      const chat = document.getElementById("chatbot");
+      chat.innerHTML = "<b>Chatbot:</b> Merci pour ta réponse. Continue comme ça ! Si tu veux une explication, dis-le moi.";
+    }
+  </script>
+</head>
+<body>
+  <h1>📝 Questions de Code - Cameroun</h1>
+
+  <div class="question">
+    <h2>1. Que signifie ce panneau ?</h2>
+    <img src="stop.png" alt="panneau stop" width="100"><br>
+    <input type="radio" name="q1" value="Cédez le passage"> Cédez le passage<br>
+    <input type="radio" name="q1" value="Arrêt obligatoire"> Arrêt obligatoire<br>
+    <input type="radio" name="q1" value="Priorité à droite"> Priorité à droite<br>
+    <button onclick="valider(1, 'Arrêt obligatoire')">Valider</button>
+    <p id="result1"></p>
+  </div>
+
+  <div class="question">
+    <h2>2. Que signifie ce panneau ?</h2>
+    <img src="priorite.png" alt="panneau priorité" width="100"><br>
+    <input type="radio" name="q2" value="Route glissante"> Route glissante<br>
+    <input type="radio" name="q2" value="Cédez le passage"> Cédez le passage<br>
+    <input type="radio" name="q2" value="Priorité à droite"> Priorité à droite<br>
+    <button onclick="valider(2, 'Priorité à droite')">Valider</button>
+    <p id="result2"></p>
+  </div>
+
+  <div class="question">
+    <h2>3. Que signifie ce panneau ?</h2>
+    <img src="interdit.png" alt="panneau interdit" width="100"><br>
+    <input type="radio" name="q3" value="Sens unique"> Sens unique<br>
+    <input type="radio" name="q3" value="Sens interdit"> Sens interdit<br>
+    <input type="radio" name="q3" value="Stationnement interdit"> Stationnement interdit<br>
+    <button onclick="valider(3, 'Sens interdit')">Valider</button>
+    <p id="result3"></p>
+  </div>
+
+  <div id="chatbot"><b>Chatbot:</b> Je suis là pour t'aider. Clique sur "Valider" pour chaque question.</div>
+</body>
+</html>
